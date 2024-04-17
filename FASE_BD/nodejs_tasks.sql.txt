@@ -1,0 +1,13 @@
+INSERT INTO tasks VALUES
+(0,'Analisar o código escrito para a função adicionar', 'new', NOW(), NOW(), NULL),
+(0,'Corrigir um bug que existe no script teste.js', 'new', NOW(), NOW(), NULL),
+(0,'Desenvolver a estrutura base de uma API Rest em NodeJS', 'new', NOW(), NOW(), NULL),
+(0,'Fazer o inventário de servidores atualmente em execução', 'new', NOW(), NOW(), NULL),
+(0,'Esboçar uma infraestrutura Docker para funcionamento com Kubernetes', 'new', NOW(), NOW(), NULL),
+(0,'Corrigir inconsistências no sistema de monitoramento dos servidores', 'new', NOW(), NOW(), NULL),
+(0,'Adquirir 3 VPS para ambientes de PROD, PRE e DEV', 'new', NOW(), NOW(), NULL),
+(0,'Efetuar testes de invasão no site www.estoucomfalhas.com', 'new', NOW(), NOW(), NULL),
+(0,'Elaborar documentação da API de clientes', 'new', NOW(), NOW(), NULL),
+(0,'Enviar email para Cremilda com a documentação da API de clientes', 'new', NOW(), NOW(), NULL),
+(0,'Almoço de negócios com a empresa Faliu.com', 'new', NOW(), NOW(), NULL),
+(0,'Festa de aniversário do Adamastor Sabetudo - 19:00', 'new', NOW(), NOW(), NULL)
