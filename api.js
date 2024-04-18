@@ -63,7 +63,7 @@ app.get('/tasks/:id', (req, res) => {
 app.put('/tasks/:id/status/:status', (req, res) => {
     const id = req.params.id;
     const status = req.params.status;
-    connect.query('UPDATE tasks SET status = ? WHERE id = ?', [status, id], (err, rows) => {
+    connect.query('UPDATE tasks SET status = ?, updated_at = NOW() WHERE id = ?', [status, id], (err, rows) => {
         if (!err) {
             if (rows.affectedRows>0) {
                 res.json(fun.response('sucesso', 'Status alterado', rows.length, null));
@@ -75,7 +75,25 @@ app.put('/tasks/:id/status/:status', (req, res) => {
         }
     })
 })
-
+//rota de delete
+app.delete('/tasks/:id/delete',(req,res)=>{
+    const id = req.params.id;
+    connect.query('DELETE FROM tasks WHERE id = ?',[id],(err,rows)=>{
+        if (!err) {
+            if (rows.affectedRows>0) {
+                res.json(fun.response('sucesso', 'Task deleteada', rows.affectedRows, null));
+            } else {
+                res.json(fun.response('Algo de errado', 'Não foi possivel completar a atribuição', 0, null));
+            }
+        } else {
+            res.json(fun.response('Erro', err.message, 0, null))
+        }
+    })
+})
+//rota de criação de task
+app.post('',(req,res)=>{
+    
+})
 //erro de rota
 app.use((req, res) => {
     res.json(fun.response('ATENÇÃO', 'ROTA NÃO ENCONTRADA', 0, null))
