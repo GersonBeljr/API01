@@ -23,6 +23,9 @@ app.use((req, res, next) => {
 })
 
 const connect = mysql.createConnection(sqlConfig);
+// inserindo tratamento dos params
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
@@ -65,7 +68,7 @@ app.put('/tasks/:id/status/:status', (req, res) => {
     const status = req.params.status;
     connect.query('UPDATE tasks SET status = ?, updated_at = NOW() WHERE id = ?', [status, id], (err, rows) => {
         if (!err) {
-            if (rows.affectedRows>0) {
+            if (rows.affectedRows > 0) {
                 res.json(fun.response('sucesso', 'Status alterado', rows.length, null));
             } else {
                 res.json(fun.response('Algo de errado', 'Status não pode ser alterado', 0, null));
@@ -76,11 +79,11 @@ app.put('/tasks/:id/status/:status', (req, res) => {
     })
 })
 //rota de delete
-app.delete('/tasks/:id/delete',(req,res)=>{
+app.delete('/tasks/:id/delete', (req, res) => {
     const id = req.params.id;
-    connect.query('DELETE FROM tasks WHERE id = ?',[id],(err,rows)=>{
+    connect.query('DELETE FROM tasks WHERE id = ?', [id], (err, rows) => {
         if (!err) {
-            if (rows.affectedRows>0) {
+            if (rows.affectedRows > 0) {
                 res.json(fun.response('sucesso', 'Task deleteada', rows.affectedRows, null));
             } else {
                 res.json(fun.response('Algo de errado', 'Não foi possivel completar a atribuição', 0, null));
@@ -91,8 +94,29 @@ app.delete('/tasks/:id/delete',(req,res)=>{
     })
 })
 //rota de criação de task
-app.post('',(req,res)=>{
-    
+app.post('/tasks/create', (req, res) => {
+    const post_data = req.body;
+
+    if (post_data == undefined) {
+        res.json(fun.response('Atenção', 'Sem dados a nova task', 0, null));
+        return
+    }
+
+    if (post_data.task == undefined || post_data.status == undefined) {
+        res.json(fun.response('Atenção', 'Dados invalidos', 0, null));
+        return
+    }
+
+    const task = post_data.task;
+    const status = post_data.status;
+
+    connect.query('INSERT INTO tasks (task,status,created_at,updated_at) VALUE(?,?,NOW(),NOW())', [task, status], (err, rows) => {
+        if (!err) {
+            res.json(fun.response('sucesso', 'Task criada', rows.affectedRows, null));
+        } else {
+            res.json(fun.response('Erro', err.message, 0, null))
+        }
+    })
 })
 //erro de rota
 app.use((req, res) => {
