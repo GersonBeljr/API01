@@ -1,0 +1,117 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "tasks",
+    "dateExported": "2024-04-22T18:21:42.506Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "513e5b27-bf31-4ffb-9819-2c55cb94bc2e",
+            "colId": "bab4b205-7d18-4bac-90d2-397d492a723f",
+            "containerId": "",
+            "name": "task de entrada",
+            "url": "localhost:3000",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-04-22T18:05:22.403Z",
+            "modified": "2024-04-22T18:05:32.865Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0abd5383-dbbe-4c6e-8793-1b8f0862b5d0",
+            "colId": "bab4b205-7d18-4bac-90d2-397d492a723f",
+            "containerId": "",
+            "name": "Testa todas as tasks",
+            "url": "localhost:3000/tasks",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-04-22T18:05:50.044Z",
+            "modified": "2024-04-22T18:06:14.900Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e9e60878-d98c-4b78-8218-818f848a3c2a",
+            "colId": "bab4b205-7d18-4bac-90d2-397d492a723f",
+            "containerId": "",
+            "name": "Inserir task pelo body",
+            "url": "localhost:3000/tasks/3/update",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-04-22T18:16:37.858Z",
+            "modified": "2024-04-22T18:19:34.780Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "\n{\n  \"task\":\"apostar no TRIGRINHO\",\n     \"status\":\"perdi a casa\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "32658949-156a-440e-96bc-c47c33278de4",
+            "colId": "bab4b205-7d18-4bac-90d2-397d492a723f",
+            "containerId": "",
+            "name": "Lista task por ID",
+            "url": "localhost:3000/tasks/1",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-04-22T18:07:10.371Z",
+            "modified": "2024-04-22T18:07:41.336Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "289755d6-cd01-4fc5-b256-c9b19cc55a88",
+            "colId": "bab4b205-7d18-4bac-90d2-397d492a723f",
+            "containerId": "",
+            "name": "Atualiza status da task",
+            "url": "localhost:3000/tasks/1/status/atualiza",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-04-22T18:08:35.579Z",
+            "modified": "2024-04-22T18:09:27.475Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5f3b829f-8f43-433c-b6b1-877849200e41",
+            "colId": "bab4b205-7d18-4bac-90d2-397d492a723f",
+            "containerId": "",
+            "name": "deletar task",
+            "url": "localhost:3000/tasks/1/delete",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-04-22T18:10:58.163Z",
+            "modified": "2024-04-22T18:11:30.927Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "8110f828-62ae-4113-9d70-9266b5f05536",
+            "colId": "bab4b205-7d18-4bac-90d2-397d492a723f",
+            "containerId": "",
+            "name": "inserir task",
+            "url": "localhost:3000/tasks/create",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-04-22T18:12:07.275Z",
+            "modified": "2024-04-22T18:13:42.946Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"task\":\"apostar no TRIGRINHO\",\n     \"status\":\"perdi a casa\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}

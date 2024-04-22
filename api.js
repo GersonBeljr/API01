@@ -118,6 +118,36 @@ app.post('/tasks/create', (req, res) => {
         }
     })
 })
+
+//rota de atualizar uma task pelo body
+app.put('/tasks/:id/update', (req, res) => {
+    //pegando os dados da requisição
+    const id = req.params.id;
+    const post_data = req.body;
+
+    //checar se os dados estão vazios
+    if (post_data == undefined) {
+        res.json(fun.response('Atenção', 'sem dados para atualização de task', 0, null));
+        return;
+    }
+    if (post_data.task == undefined || post_data.status == undefined) {
+        res.json(fun.response('Atenção', 'dados invalidos', 0, null));
+        return;
+    }
+
+    connect.query('UPDATE tasks SET task = ?, status = ?, updated_at = NOW() WHERE id = ?',[post_data.task,post_data.status,id],(err, rows) => {
+        if (!err) {
+            if (rows.affectedRows>0) {
+                res.json(fun.response('sucesso', 'task e status do ID: '+id+' atualizado.', rows.affectedRows, null));
+            }else{
+                res.json(fun.response('Atenção', 'task não encontrada para atualizar',0, null));
+            }
+        } else {
+            res.json(fun.response('Erro', err.message, 0, null))
+        }
+    })
+})
+
 //erro de rota
 app.use((req, res) => {
     res.json(fun.response('ATENÇÃO', 'ROTA NÃO ENCONTRADA', 0, null))
